@@ -154,7 +154,7 @@ public class HttpServer implements Runnable {
                     tryWrite(key, WsEncode(WSDecoder.OPCODE_PONG, frame.data));
                 } else if (frame instanceof PongFrame) {
                     atta.decoder.reset();
-                    tryWrite(key, WsEncode(WSDecoder.OPCODE_PONG, frame.data));
+                    tryWrite(key, WsEncode(WSDecoder.OPCODE_PONG, new byte[0]));
                 } else if (frame instanceof CloseFrame) {
                     handler.clientClose(atta.channel, ((CloseFrame) frame).getStatus());
                     // close the TCP connection after sent
